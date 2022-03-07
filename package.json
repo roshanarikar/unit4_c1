@@ -1,0 +1,21 @@
+{
+  "name": "unit4_c1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server" : "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roshanarikar/unit4_c1.git"
+  },
+  "keywords": [],
+  "author": "Roshan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roshanarikar/unit4_c1/issues"
+  },
+  "homepage": "https://github.com/roshanarikar/unit4_c1#readme"
+}
