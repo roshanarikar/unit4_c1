@@ -1,11 +1,7 @@
 const express = require("express");
 const app = express();
 
-// GET /books => this should return response of { route: "/books"}
-
-// GET / libraries => this should return response of { route: "/libraries", permission: true}
-
-// GET /authors => this should return response of { route: "/authors", permission: true}
+app.use(logger)
 
 app.get('/books',(req,res) =>{
     return res.send({ route: "/books"})
@@ -18,6 +14,37 @@ app.get('/libraries',(req,res) =>{
 app.get('/authors',(req,res) =>{
     return res.send({ route: "/authors", permission: true})
 })
-app.listen(3000,() =>{
-    console.log("Listening on port 3000")
+
+app.get('/open',loggIn("librarian"),(req,res) =>{
+    return res.send("open Library")
+})
+
+
+function loggIn(role){
+    return function logger(req,res,next){
+        if(role === "librarian"){
+            return next();
+        }
+        return res.send("No books");
+    };
+}
+
+function logger(req,res,next){
+    if(req.path === "/books"){
+        req.role = "books";
+    }
+    else if(req.path === "/libraries"){
+        req.role = "libraries";
+    }
+    else if(req.path === "/authors"){
+        req.role = "authors";
+    }
+    else{
+        req.role = "nothing";
+    }
+    next();
+
+}
+app.listen(4000,() =>{
+    console.log("Listening on port 4000")
 });
