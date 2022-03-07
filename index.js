@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 app.use(logger)
+app.use(checkPermission)
 
 app.get('/books',(req,res) =>{
     return res.send({ route: "/books"})
@@ -43,7 +44,19 @@ function logger(req,res,next){
         req.role = "nothing";
     }
     next();
+}
 
+function checkPermission(req,res,next){
+    if(req.path === "/libraries"){
+        req.role = checkPermission("librarian");
+    }
+    else if(req.path === "/authors"){
+        req.role = checkPermission("author");
+    }
+    else{
+        req.role = "nothing";
+    }
+    next();
 }
 app.listen(3000,() =>{
     console.log("Listening on port 3000")
