@@ -20,7 +20,6 @@ app.get('/open',loggIn("librarian"),(req,res) =>{
     return res.send("open Library")
 })
 
-
 function loggIn(role){
     return function logger(req,res,next){
         if(role === "librarian"){
