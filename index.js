@@ -28,7 +28,6 @@ function loggIn(role){
         return res.send("No books");
     };
 }
-
 function logger(req,res,next){
     if(req.path === "/books"){
         req.role = "books";
