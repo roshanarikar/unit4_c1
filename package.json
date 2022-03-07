@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server" : "nodemon index.js"
+    "server": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/roshanarikar/unit4_c1/issues"
   },
-  "homepage": "https://github.com/roshanarikar/unit4_c1#readme"
+  "homepage": "https://github.com/roshanarikar/unit4_c1#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
